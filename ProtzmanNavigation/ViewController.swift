@@ -9,23 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var food:FoodData!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.title = "JF Tracker"
-        
-        
+        let myModel = AppDelegate.myModel.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let myModel1 = AppDelegate.myModel
-        let myModel = AppDelegate.myModel.loadData()
-        popcornLBL.text? = myModel1.report(forItem: 0)
-        chipsLBL.text? = myModel1.report(forItem: 2)
-        cokeLBL.text? = myModel1.report(forItem: 1)
-        totalLBL.text? = myModel1.combinedReport()
-        testLBL.text? = "it is \(myModel1.tallyReport())"
+
+        popcornLBL.text? = myModel1!.report(forItem: 0)
+        chipsLBL.text? = myModel1!.report(forItem: 2)
+        cokeLBL.text? = myModel1!.report(forItem: 1)
+        
+        totalLBL.text? = myModel1!.combinedReport()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +40,10 @@ class ViewController: UIViewController {
     
     @IBAction func reset(_ sender: Any) {
         let myModel = AppDelegate.myModel.reset()
+        let myModel1 = AppDelegate.myModel
+        popcornLBL.text? = myModel1!.report(forItem: 0)
+        chipsLBL.text? = myModel1!.report(forItem: 2)
+        cokeLBL.text? = myModel1!.report(forItem: 1)
     }
     
     @IBOutlet weak var popcornLBL: UILabel!
@@ -49,7 +53,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var totalLBL: UILabel!
     
-    @IBOutlet weak var testLBL: UILabel!
     
 }
 

@@ -15,24 +15,21 @@ struct FoodData {
 }
 
 class FoodRecorder {
-    var foods:[FoodData]
+    var foods:[FoodData]            //choices for the table view controller
     
     init() {
         foods = []
     }
     
     func loadData() {
-        let popcorn:FoodData = FoodData(name:"Popcorn", calories:106, tally:1)
-        let coke:FoodData = FoodData(name:"Coke", calories:140, tally:1)
-        let chips:FoodData = FoodData(name:"Potato Chips", calories:152, tally:1)
+        let popcorn:FoodData = FoodData(name:"Popcorn", calories:106, tally:0)
+        let coke:FoodData = FoodData(name:"Coke", calories:140, tally:0)
+        let chips:FoodData = FoodData(name:"Potato Chips", calories:152, tally:0)
         foods += [popcorn, coke, chips]
     }
     
-    func increaseTally(forItem i:Int) -> Int {
-//        var tallyItem:Int = foods[i].tally
-//        tallyItem = tallyItem + 1
-//        return tallyItem
-        return foods[i].tally + 1
+    func increaseTally(forItem i:Int) {
+        foods[i].tally += 1
     }
     
     func getCalories(forItem i:Int) -> Double {

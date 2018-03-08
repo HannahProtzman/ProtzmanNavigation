@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    static var myModel:FoodRecorder = FoodRecorder()
+    static var myModel:FoodRecorder! = FoodRecorder()
+    static var myView:ViewController! = ViewController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
