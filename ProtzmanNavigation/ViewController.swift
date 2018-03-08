@@ -14,16 +14,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.title = "JF Tracker"
-        let myModel = AppDelegate.myModel.loadData()
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let myModel1 = AppDelegate.myModel
+        let myModel = AppDelegate.myModel.loadData()
         popcornLBL.text? = myModel1.report(forItem: 0)
         chipsLBL.text? = myModel1.report(forItem: 2)
         cokeLBL.text? = myModel1.report(forItem: 1)
         totalLBL.text? = myModel1.combinedReport()
+        testLBL.text? = "it is \(myModel1.tallyReport())"
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,5 +48,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var chipsLBL: UILabel!
     
     @IBOutlet weak var totalLBL: UILabel!
+    
+    @IBOutlet weak var testLBL: UILabel!
+    
 }
 

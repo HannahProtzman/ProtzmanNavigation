@@ -11,7 +11,7 @@ import Foundation
 struct FoodData {
     var name:String
     var calories:Double
-    var tally:Int = 0
+    var tally:Int
 }
 
 class FoodRecorder {
@@ -22,16 +22,17 @@ class FoodRecorder {
     }
     
     func loadData() {
-        let popcorn:FoodData = FoodData(name:"Popcorn", calories:106, tally:0)
-        let coke:FoodData = FoodData(name:"Coke", calories:140, tally:0)
-        let chips:FoodData = FoodData(name:"Potato Chips", calories:152, tally:0)
+        let popcorn:FoodData = FoodData(name:"Popcorn", calories:106, tally:1)
+        let coke:FoodData = FoodData(name:"Coke", calories:140, tally:1)
+        let chips:FoodData = FoodData(name:"Potato Chips", calories:152, tally:1)
         foods += [popcorn, coke, chips]
     }
     
     func increaseTally(forItem i:Int) -> Int {
-        var tallyItem:Int = foods[i].tally
-        tallyItem = tallyItem + 1
-        return tallyItem
+//        var tallyItem:Int = foods[i].tally
+//        tallyItem = tallyItem + 1
+//        return tallyItem
+        return foods[i].tally + 1
     }
     
     func getCalories(forItem i:Int) -> Double {
@@ -45,19 +46,27 @@ class FoodRecorder {
     func totalCalories() -> Double {
         var sum:Double = 0
         for i in 0..<foods.count {
-            sum += foods[i].calories
+            sum += (getCalories(forItem: i))
         }
         return sum
     }
     
     func combinedReport() -> String {
-        return "Total Calories consumed is \(totalCalories)"
+        return "Total Calories consumed is \(totalCalories())"
     }
     
     func reset() {
         foods[0].tally = 0
         foods[1].tally = 0
         foods[2].tally = 0
+    }
+    
+    func tallyReport() -> String {
+        return "It is \(foods[0].tally)"
+    }
+    
+    func tallyTest() -> String {
+        return "Hannah"
     }
     
 }

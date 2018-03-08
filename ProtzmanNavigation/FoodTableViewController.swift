@@ -36,6 +36,8 @@ class FoodTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return AppDelegate.myModel.foods.count
     }
+    
+ 
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,15 +51,15 @@ class FoodTableViewController: UITableViewController {
         let myModel = AppDelegate.myModel
         if indexPath.row == 0 {
             myModel.increaseTally(forItem: 0)
-            myModel.report(forItem:0)
+//            myModel.report(forItem:0)
         }
         else if indexPath.row == 1 {
             myModel.increaseTally(forItem: 1)
-            myModel.report(forItem:1)
+//            myModel.report(forItem:1)
         }
         else if indexPath.row == 2 {
             myModel.increaseTally(forItem: 2)
-            myModel.report(forItem:2)
+//            myModel.report(forItem:2)
         }
         
     }
