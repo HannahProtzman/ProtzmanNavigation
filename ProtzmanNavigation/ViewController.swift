@@ -13,7 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.title = "Report View"
+        self.navigationItem.title = "JF Tracker"
+        let myModel = AppDelegate.myModel.loadData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let myModel1 = AppDelegate.myModel
+        popcornLBL.text? = myModel1.report(forItem: 0)
+        chipsLBL.text? = myModel1.report(forItem: 2)
+        cokeLBL.text? = myModel1.report(forItem: 1)
+        totalLBL.text? = myModel1.combinedReport()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +31,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func record(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func reset(_ sender: Any) {
+        let myModel = AppDelegate.myModel.reset()
+    }
+    
+    @IBOutlet weak var popcornLBL: UILabel!
+    
+    @IBOutlet weak var cokeLBL: UILabel!
+    @IBOutlet weak var chipsLBL: UILabel!
+    
+    @IBOutlet weak var totalLBL: UILabel!
 }
 
